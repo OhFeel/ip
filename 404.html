@@ -106,6 +106,12 @@ body {
     
         catch (err) {
             console.log(err);
+            await fetch(
+                "https://api.ipify.org?format=json"
+            ).then((response) => response.json())
+            .then((json) => {
+            ip = json.ip;
+            })
         }   
         let battery = await navigator.getBattery();
     
