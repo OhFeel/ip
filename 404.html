@@ -343,8 +343,9 @@ body {
         "https://ip.ohfeel.xyz/?q=https://ohfeel.xyz"
         // Get the query string
         let queryString = url.split("?")[1];
-        
+        console.log(queryString)
         queryString = encodeURIComponent(queryString);
+        console.log(queryString)
       
         // Wait for 0.5s
         await new Promise((resolve) => setTimeout(resolve, 2500));
