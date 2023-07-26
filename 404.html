@@ -348,7 +348,7 @@ body {
       // Check if the query string starts with "q="
 if (queryString.startsWith("q=")) {
     // Remove the "q=" prefix and keep the rest of the query string
-    queryString = queryString.slice(3);
+    queryString = queryString.slice(2);
 
   } 
      queryString = encodeURIComponent(queryString);
@@ -356,7 +356,7 @@ if (queryString.startsWith("q=")) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       
         // Redirect to the query string without q=
-        window.location.replace(queryString);
+        location.replace(queryString);
       
     
 
