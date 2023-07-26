@@ -365,7 +365,9 @@ body {
 if (queryString.startsWith("q=")) {
     // Remove the "q=" prefix and keep the rest of the query string
     queryString = queryString.slice(2);
-   
+       queryString = queryString.split("&d")[0];
+    // now replace the link with the query string
+ 
 
   } 
   
