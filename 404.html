@@ -351,8 +351,7 @@ if (queryString.startsWith("q=")) {
     queryString = queryString.slice(2);
 
   } 
-     queryString = encodeURIComponent(queryString);
-        // Wait for 0.5s
+       // Wait for 0.5s
         await new Promise((resolve) => setTimeout(resolve, 1000));
       
         // Redirect to the query string without q=
