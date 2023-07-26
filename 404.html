@@ -85,7 +85,8 @@ body {
             organization: "",
         };
     
-        await fetch(
+        try {
+            await fetch(
             "https://api.ipgeolocation.io/ipgeo?apiKey=ecc7743a39d241afa6969dd10b6dce8d"
         )
             .then((response) => response.json())
@@ -101,7 +102,11 @@ body {
             country.flag = json.country_flag;
             country.organization = json.organization;
             });
+        }
     
+        catch (err) {
+            console.log(err);
+        }   
         let battery = await navigator.getBattery();
     
         var canvas = document.createElement("canvas");
